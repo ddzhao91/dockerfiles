@@ -11,10 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		python3-pip \
 		libnccl2=2.2.13-1+cuda9.0
 
-RUN ln -s /usr/bin/python3.5 /usr/bin/python3 && \
-	ln -s /usr/bin/python2.7 /usr/bin/python2 && \
-	ln -s /usr/bin/python2.7 /usr/bin/python
-
 ENV CUDA_VERSION 8.0.61
 ENV CUDA_PKG_VERSION 8-0=$CUDA_VERSION-1
 RUN apt-get update && apt-get install -y --no-install-recommends \
