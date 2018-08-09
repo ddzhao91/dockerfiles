@@ -1,10 +1,12 @@
-FROM rt/cuda:8.0-9.0-cudnn7-nccl2-ubuntu16.04
+FROM domzh/cuda:9.0-base
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
         git \
         wget \
+        libturbojpeg \
+        libopenblas-dev \
         libatlas-base-dev \
         libboost-all-dev \
         libgflags-dev \
@@ -33,8 +35,6 @@ RUN git clone -b caffe-0.17 --depth 1 https://github.com/NVIDIA/caffe .
 RUN cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
     pip install protobuf && \
     mkdir build && cd build 
-RUN apt-get update && apt-get install -y libturbojpeg libopenblas-dev && \
-    rm -rf /var/lib/apt/lists/*
 
 RUN cd /opt/caffe/build && cmake -DUSE_CUDNN=1 -DUSE_NCCL=1 .. && \
     make -j"$(nproc)"
