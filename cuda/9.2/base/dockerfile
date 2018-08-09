@@ -1,0 +1,2 @@
+#CUDA9.2 + cuDNN 7.2.1.38 + nccl 2.2.13
+FROM nvidia/cuda:9.2-cudnn7-devel-ubuntu16.04
