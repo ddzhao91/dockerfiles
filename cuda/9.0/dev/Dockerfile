@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsnappy-dev && \
     rm -rf /var/lib/apt/lists/*
 RUN pip install --upgrade pip
-RUN pip install Cython>=0.19.2 \
+RUN python -m pip install Cython>=0.19.2 \
     numpy>=1.7.1 \
     scipy>=0.13.2 \
     scikit-image>=0.9.3 \
