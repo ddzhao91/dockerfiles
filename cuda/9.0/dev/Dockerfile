@@ -5,20 +5,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake \
     git \
     wget \
-		vim \
-		wget \
-		net-tools \
-		iputils-ping \
+    vim \
+    wget \
+    net-tools \
+    iputils-ping \
     python-dev \
-		python2.7 \
-		python3.5 \
-		python-pip \
-		python3-pip \
+    python2.7 \
+    python3.5 \
+    python-pip \
+    python3-pip \
     python-numpy \
     python-setuptools \
     python-scipy \
     protobuf-compiler \
-		libnccl2=2.2.13-1+cuda9.0 \
+    libnccl2=2.2.13-1+cuda9.0 \
     libturbojpeg \
     libopenblas-dev \
     libatlas-base-dev \
@@ -49,6 +49,6 @@ RUN pip install Cython>=0.19.2 \
     python-gflags>=2.0 \
     pyyaml>=3.10 \
     Pillow>=2.3.0 \
-    six>=1.1.0
+    six>=1.1.0 \
     pydot \
     protobuf
