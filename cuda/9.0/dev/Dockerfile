@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsnappy-dev && \
     rm -rf /var/lib/apt/lists/*
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py && rm -rf get-pip.py
-RUN pip2 install Cython>=0.19.2 \
+RUN pip install Cython>=0.19.2 \
     numpy>=1.7.1 \
     scipy>=0.13.2 \
     scikit-image>=0.9.3 \
