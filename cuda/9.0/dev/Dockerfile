@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     iputils-ping \
     python-dev \
     python2.7 \
-    python3.5 \
     python-numpy \
     python-setuptools \
     python-scipy \
