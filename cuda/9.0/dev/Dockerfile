@@ -2,6 +2,7 @@
 FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    curl \
     cmake \
     git \
     wget \
@@ -12,8 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python-dev \
     python2.7 \
     python3.5 \
-    python-pip \
-    python3-pip \
     python-numpy \
     python-setuptools \
     python-scipy \
@@ -32,7 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libprotobuf-dev \
     libsnappy-dev && \
     rm -rf /var/lib/apt/lists/*
-RUN pip install --upgrade pip
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py && rm -rf get-pip.py
 RUN pip2 install Cython>=0.19.2 \
     numpy>=1.7.1 \
     scipy>=0.13.2 \
