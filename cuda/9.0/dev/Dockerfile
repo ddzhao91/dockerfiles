@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     vim \
     wget \
+    unzip \
     net-tools \
     iputils-ping \
     python-dev \
