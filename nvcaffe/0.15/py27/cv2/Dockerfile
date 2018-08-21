@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
@@ -14,6 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         cmake \
         git \
         wget \
+	zip \
+	unzip \
         libturbojpeg \
         libopenblas-dev \
         libatlas-base-dev \
@@ -48,7 +50,27 @@ RUN cd python && for req in $(cat requirements.txt) pydot; do pip install $req; 
 RUN cd /opt/caffe/build && cmake -DUSE_CUDNN=1 -DUSE_NCCL=1 .. && \
     make -j"$(nproc)"
 
-ENV PYCAFFE_ROOT $CAFFE_ROOT/python
-ENV PYTHONPATH $PYCAFFE_ROOT:$PYTHONPATH
-ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
+RUN echo "export CAFFE_ROOT=/opt/caffe" >> /etc/profile
+#ENV CAFFE_DATA $CAFFE_ROOT/build/tools
+RUN echo "export CAFFE_DATA=$CAFFE_ROOT/build/tools" >> /etc/profile
+#ENV PYCAFFE_ROOT $CAFFE_ROOT/python
+RUN echo "export PYCAFFE_ROOT=$CAFFE_ROOT/python" >> /etc/profile
+#ENV PYTHONPATH $PYCAFFE_ROOT:$PYTHONPATH
+RUN echo "export PYTHONPATH=$CAFFE_ROOT/python:\$PYTHONPATH" >> /etc/profile
+#ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
+RUN echo "export PATH=/opt/caffe/build/tools:/opt/caffe/python:/usr/local/nvidia/bin:/usr/local/cuda/bin:\$PATH" >> /etc/profile
+RUN echo "export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:\$LD_LIBRARY_PATH" >> /etc/profile
+RUN echo "export LIBRARY_PATH=/usr/local/cuda/lib64/stubs:\$LIBRARY_PATH" >> /etc/profile
+#configure ssh
+RUN mkdir /var/run/sshd
+
+RUN echo 'root:root' |chpasswd
+
+RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+
+RUN mkdir /root/.ssh
+
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
+EXPOSE 22
+CMD    ["/usr/sbin/sshd", "-D"]
