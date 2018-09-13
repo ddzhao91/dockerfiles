@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     
 RUN echo 'root:root' |chpasswd && \
     mkdir /var/run/sshd && \
-    ssh-keygen -f /root/.ssh/id_rsa -P '' && \
-    cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys && \
+    ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
     sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/#   StrictHostKeyChecking ask/StrictHostKeyChecking no/' /etc/ssh/ssh_config
 
