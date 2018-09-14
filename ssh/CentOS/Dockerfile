@@ -11,3 +11,4 @@ RUN echo 'root:root' |chpasswd && \
     sed -i 's/#   StrictHostKeyChecking ask/StrictHostKeyChecking no/' /etc/ssh/ssh_config
 
 EXPOSE 22
+CMD    ["/usr/sbin/sshd", "-D"]
