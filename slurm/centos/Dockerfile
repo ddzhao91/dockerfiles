@@ -11,7 +11,8 @@ RUN /usr/sbin/create-munge-key && chown munge:munge /etc/munge/munge.key
 RUN export SLURMUSER=412 && \
     groupadd -g $SLURMUSER slurm && \
     useradd -m -c "SLURM workload manager" -d /var/lib/slurm -u $SLURMUSER -g slurm -s /bin/bash slurm
-RUN yum install -y wget \
+RUN yum install -y gcc \
+    wget \
     openssl \
     openssl-devel \
     pam-devel \
@@ -39,7 +40,7 @@ RUN yum install -y wget \
 RUN cd ~ && wget  https://download.schedmd.com/slurm/slurm-17.11.9-2.tar.bz2 && \
     rpmbuild -ta slurm-17.11.9-2.tar.bz2 && \
     cd /root/rpmbuild/RPMS/x64 && \
-    yum --nogpgcheck localinstall slurm-*.rpm && \
+    yum --nogpgcheck localinstall -y slurm-*.rpm && \
     mkdir /var/spool/slurm && \
     mkdir /var/spool/slurm/ctld && \
     mkdir /var/spool/slurm/d && \
