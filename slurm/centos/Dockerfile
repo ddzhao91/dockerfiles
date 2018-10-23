@@ -1,6 +1,6 @@
 From nvidia/cuda:9.0-cudnn7-devel-centos7
 RUN yum install -y epel-release && \
-    yum install munge munge-devel && \
+    yum install -y munge munge-devel && \
     chmod -Rf 700 /etc/munge && \
     chmod -Rf 711 /var/lib/munge && \
     chmod -Rf 700 /var/log/munge && \
