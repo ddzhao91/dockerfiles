@@ -39,7 +39,7 @@ RUN yum install -y gcc \
     
 RUN cd ~ && wget  https://download.schedmd.com/slurm/slurm-17.11.9-2.tar.bz2 && \
     rpmbuild -ta slurm-17.11.9-2.tar.bz2 && \
-    cd /root/rpmbuild/RPMS/x64 && \
+    cd /root/rpmbuild/RPMS/x86_64 && \
     yum --nogpgcheck localinstall -y slurm-*.rpm && \
     mkdir /var/spool/slurm && \
     mkdir /var/spool/slurm/ctld && \
