@@ -45,3 +45,5 @@ RUN cd ~ && wget  https://download.schedmd.com/slurm/slurm-17.11.9-2.tar.bz2 && 
     mkdir /var/spool/slurm/ctld && \
     mkdir /var/spool/slurm/d && \
     chown -R slurm:slurm /var/spool/slurm
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
+RUN pip install --index-url https://mirrors.aliyun.com/pypi/simple tensorflow-gpu==1.9.0
