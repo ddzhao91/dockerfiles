@@ -9,8 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
     vim \
+    wget \
     ca-certificates \
     libjpeg-dev \
-    libpng-dev &&\
+    libpng-dev && \
     rm -rf /var/lib/apt/lists/*
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
 RUN pip3 install http://download.pytorch.org/whl/cu90/torch-0.4.1-cp35-cp35m-win_amd64.whl torchvision
