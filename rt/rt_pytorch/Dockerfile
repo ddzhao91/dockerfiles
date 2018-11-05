@@ -6,13 +6,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.5-dev \
     libncurses5-dev \
     cmake \
+    wget \
     git \
     curl \
     vim \
-    wget \
     ca-certificates \
     libjpeg-dev \
     libpng-dev && \
     rm -rf /var/lib/apt/lists/*
-RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
-RUN pip3 install http://download.pytorch.org/whl/cu90/torch-0.4.1-cp35-cp35m-win_amd64.whl torchvision
+RUN ln -s /usr/bin/python3.5 /usr/bin/python && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
+RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp35-cp35m-linux_x86_64.whl torchvision
