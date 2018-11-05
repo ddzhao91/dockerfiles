@@ -41,6 +41,15 @@ WORKDIR $CAFFE_ROOT
 
 RUN pip install --upgrade pip
 
+RUN wget https://github.com/NVIDIA/nccl/archive/v1.3.4-1.zip && \
+    unzip v1.3.4-1.zip && \
+    cd nccl-1.3.4-1 && \
+    make PREFIX=/usr/local/cuda install && \
+    cp -ar /usr/local/cuda/lib/* /usr/local/cuda/lib64 && \
+    cd .. && \
+    rm -rf nccl-1.3.4-1 && \
+    rm -rf v1.3.4-1.zip 
+    
 RUN git clone -b caffe-0.15 --depth 1 https://github.com/NVIDIA/caffe . 
 
 RUN cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
