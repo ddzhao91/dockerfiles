@@ -47,7 +47,7 @@ RUN cd python && for req in $(cat requirements.txt) pydot; do pip install $req; 
     pip install protobuf && \
     mkdir build && cd build 
 
-RUN cd /opt/caffe/build && cmake -DUSE_CUDNN=1 -DUSE_NCCL=1 .. && \
+RUN cd /opt/caffe/build && cmake -DUSE_CUDNN=1 -DUSE_NCCL=ON .. && \
     make -j"$(nproc)"
 
 RUN echo "export CAFFE_ROOT=/opt/caffe" >> /etc/profile
