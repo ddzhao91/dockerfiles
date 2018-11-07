@@ -16,8 +16,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zip \
     unzip && \
     rm -rf /var/lib/apt/lists/*
-
+WORKDIR /opt/
 RUN wget --no-cookies \
     --no-check-certificate \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/server-jre-8u191-linux-x64.tar.gz
+    http://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/server-jre-8u191-linux-x64.tar.gz && \
+    tar -zxvf server-jre-8u191-linux-x64.tar.gz && \
+    rm -rf server-jre-8u191-linux-x64.tar.gz
+    
