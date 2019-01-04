@@ -12,6 +12,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     
 RUN pip3 install tensorflow-gpu==1.12.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-WORKDIR=/workspace
+RUN mkdir /workspace && cd /workspace
 
 RUN git clone https://github.com/lambdal/lambda-tensorflow-benchmark --recursive
