@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		python-pip \
 		python3-pip
     
-RUN pip3 install tensorflow-gpu==1.12.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip3 install setuptools tensorflow-gpu==1.12.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 RUN mkdir /workspace && cd /workspace
 
