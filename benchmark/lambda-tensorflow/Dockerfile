@@ -4,8 +4,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		vim \
 		wget \
 		net-tools \
-		python2.7 \
-		python3.5 \
 		iputils-ping \
 		python-pip \
 		python3-pip \
