@@ -6,27 +6,27 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get install -y --no-install-recommends \
         g++ \
         git \
-        wget \            
+        wget \
         cmake \
-        python3 \         
-        python3-dev \     
-        python3-pip \     
+        python3 \
+        python3-dev \
+        python3-pip \
         python3-setuptools \
-        clang-tools-10 \  
-        lld-10 \          
-        llvm-10-dev \     
-        libclang-10-dev \ 
-        liblld-10-dev \   
-        libpng-dev \      
-        libjpeg-dev \     
-        libgl-dev \       
-        python3-numpy \   
-        python3-scipy \   
-        python3-imageio \ 
-        python3-pybind11 \                 
-        libopenblas-dev \                  
-        libeigen3-dev \                    
-        libatlas-base-dev \                
+        clang-tools-10 \
+        lld-10 \
+        llvm-10-dev \
+        libclang-10-dev \
+        liblld-10-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libgl-dev \
+        python3-numpy \
+        python3-scipy \
+        python3-imageio \
+        python3-pybind11 \
+        libopenblas-dev \
+        libeigen3-dev \
+        libatlas-base-dev \
         doxygen \
         ninja-build \
         ca-certificates && \               
@@ -52,6 +52,4 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     
 RUN mkdir models && cd models && wget https://github.com/ddzhao91/model_zoo/raw/main/resnet50.tmfile
 
-ENV PYTHONPATH "${PYTHONPATH}:/workspace/Halide/halide-build/python_bindings/src"
-ENV LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:/workspace/Halide/halide-build/src"
 
