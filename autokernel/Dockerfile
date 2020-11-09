@@ -50,8 +50,8 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cmake .. && \
     make install -j$(nproc)
 
-COPY images /workspace/Tengine/
-COPY models /workspace/Tengine/
+ADD images /workspace/Tengine/
+ADD models /workspace/Tengine/
     
 
 
