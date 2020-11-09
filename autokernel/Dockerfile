@@ -53,4 +53,5 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
 RUN mkdir models && cd models && wget https://github.com/ddzhao91/model_zoo/raw/main/resnet50.tmfile
 
 ENV PYTHONPATH "${PYTHONPATH}:/workspace/Halide/halide-build/python_bindings/src"
+ENV LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:/workspace/Halide/halide-build/src"
 
