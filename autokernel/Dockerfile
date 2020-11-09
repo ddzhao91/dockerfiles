@@ -49,7 +49,9 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cd build && \
     cmake .. && \
     make install -j$(nproc)
+
+COPY images /workspace/Tengine/
+COPY models /workspace/Tengine/
     
-RUN mkdir models && cd models && wget https://github.com/ddzhao91/model_zoo/raw/main/resnet50.tmfile
 
 
