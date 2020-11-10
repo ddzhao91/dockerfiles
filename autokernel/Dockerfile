@@ -50,8 +50,7 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cmake .. && \
     make install -j$(nproc)
 
-ADD images /workspace/Tengine/
-ADD models /workspace/Tengine/
+COPY models/resnet50.tmfile /workspace/Tengine//modes
     
 
 
