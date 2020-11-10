@@ -51,4 +51,4 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     make install -j$(nproc)
 
 ENV PYTHONPATH "${PYTHONPATH}:/workspace/Halide/halide-build/python_bindings/src"
-ENV LD_LIBRARY_PATH "${PYTHONPATH}:/workspace/Halide/halide-build/src"
+ENV LD_LIBRARY_PATH "${LD_LIBRARY_PATH}:/workspace/Halide/halide-build/src"
