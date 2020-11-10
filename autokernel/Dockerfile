@@ -50,5 +50,5 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cmake .. && \
     make install -j$(nproc)
 
-RUN mkdir models && mkdir images
-COPY images/*.jpg /workspace/images
+ENV PYTHONPATH "${PYTHONPATH}:/workspace/Halide/halide-build/python_bindings/src"
+ENV LD_LIBRARY_PATH "${PYTHONPATH}:/workspace/Halide/halide-build/src"
