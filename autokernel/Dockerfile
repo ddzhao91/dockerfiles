@@ -51,5 +51,4 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     make install -j$(nproc)
 
 RUN mkdir models && mkdir images
-COPY models/resnet50.tmfile /workspace/models
 COPY images/* /workspace/images
