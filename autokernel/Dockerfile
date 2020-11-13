@@ -45,7 +45,7 @@ RUN git clone --branch v10.0.0 https://github.com/halide/Halide.git && \
 
 RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cd Tengine && \
-    git reset --hard 6972ba1c185882d1d9ce12f97b2ea9baba510ef3 \
+    git reset --hard 6972ba1c185882d1d9ce12f97b2ea9baba510ef3 && \
     mkdir build && \
     cd build && \
     cmake .. && \
