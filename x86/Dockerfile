@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN apt-get update && apt-get install python3 python3-dev python3-setuptools -y
 
-RUN pip3 install --upgrade pip pytest cmake==3.10.3
+RUN pip3 install --upgrade pip pytest cmake==3.18.4.post1
 RUN mkdir /workspace && cd /workspace && wget https://github.com/protocolbuffers/protobuf/archive/v3.11.0.tar.gz && tar -zxvf v3.11.0.tar.gz && cd protobuf-3.11.0 && ./autogen.sh && ./configure --prefix=/usr && make install -j$(nproc) && cd /workspace && rm -rf *
 COPY ca-certificates.crt /etc/ssl/certs/
+WORKDIR /workspace
