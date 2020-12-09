@@ -41,7 +41,7 @@ RUN git clone --branch v10.0.0 https://github.com/halide/Halide.git && \
     mkdir halide-build && \
     cd halide-build && \
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr/lib/llvm-10/cmake .. && \
-    make -j$(nproc)
+    make -j$(nproc) install
 
 RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cd Tengine && \
