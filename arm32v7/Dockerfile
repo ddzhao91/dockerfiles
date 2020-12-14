@@ -3,8 +3,6 @@ FROM ubuntu:18.04
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ADD sources.list /etc/apt/
-  
 RUN dpkg --add-architecture armhf && \
 	apt-get update && apt-get install -y --no-install-recommends \
 	libc6:armhf \
@@ -27,6 +25,7 @@ RUN dpkg --add-architecture armhf && \
         curl:armhf \
         git \
         wget \
+        ssh \
 	ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
@@ -44,4 +43,4 @@ RUN cd /workspace && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN cd /workspace && python get-pip.py && rm get-pip.py 
 RUN pip3 install pytest
 
-COPY ca-certificates.crt /etc/ssl/certs/
+WORKDIR /workspace
