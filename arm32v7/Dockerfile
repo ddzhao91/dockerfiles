@@ -23,6 +23,7 @@ RUN dpkg --add-architecture armhf && \
         python3-distutils:armhf \
         python3-setuptools:armhf \
         curl:armhf \
+        libcurl4-openssl-dev:armhf \
         git \
         wget \
         ssh \
@@ -37,7 +38,7 @@ RUN cd /usr/bin && ln -s arm-linux-gnueabihf-gcc gcc && ln -s arm-linux-gnueabih
 RUN mkdir /workspace && cd /workspace && \
 	wget --no-check-certificate https://cmake.org/files/v3.10/cmake-3.10.3.tar.gz && \
 	tar -zxvf cmake-3.10.3.tar.gz && cd cmake-3.10.3 &&\
-	./bootstrap --prefix=/usr --parallel=4 && make install -j4 && cd /workspace && rm -rf cmake*
+	./bootstrap --prefix=/usr --parallel=4 --system-curl && make install -j4 && cd /workspace && rm -rf cmake*
 
 RUN cd /workspace && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py 
 RUN cd /workspace && python get-pip.py && rm get-pip.py 
