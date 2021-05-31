@@ -47,7 +47,7 @@ RUN git clone --branch tengine-lite https://github.com/OAID/Tengine.git && \
     cd Tengine && \
     mkdir build && \
     cd build && \
-    cmake .. && \
+    cmake -DTENGINE_ENABLE_ALL_SYMBOL=ON .. && \
     make install -j$(nproc)
 
 ENV PYTHONPATH "${PYTHONPATH}:/workspace/Halide/halide-build/python_bindings/src"
